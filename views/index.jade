@@ -9,9 +9,29 @@ block content
     h1(class="header")
       | FreeCodeCamp API Basejump: Image Search Abstraction Layer
 
-    div
-      input(id="search-text")
+    div(style="width:500px;margin:auto;")
+      h3 Search with: 
+      br 
+      h2 [HOST]/api/imagesearch/[QUERY]?offset=1
+      br 
+      h1 or
       br
-      input(type="number", placeholder="offset")
-      br
-      input(type="number", placeholder="limit")
+      form(onsubmit="return searchImg()")
+        input(id="search-text", class="form-control", required="true", placeholder="Search term (Image)")
+        br
+        input(id="offset", class="form-control", type="number", placeholder="offset", required="true")
+        br
+        input(id="number", class="form-control", type="number", placeholder="limit")
+        br
+        input(type="submit", class="btn btn-primary")     
+    script.
+        function searchImg(){
+          var query = $("#search-text").val();
+          var offset = $("#offset").val();
+          var number = $("#number").val();
+          var url = "/api/imagesearch/"+query+"?offset="+offset+(Boolean(number) ? "&num="+number : "");
+          
+          window.location.replace(url);
+          //console.log(url);
+          return false;
+        }

@@ -63,7 +63,8 @@ module.exports = function(app, db) {
     var searches = db.collection('searches');
     searches.find({}).toArray(function(err, result){
       if (err) throw error;
-      out = result.map(function(o){
+      var out = result.map(function(o){
+        var n_o = {};
         n_o["query"] = o.query;
         n_o["time"] = o.time;
         return n_o;
