@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  div(class="container-fluid")
+    if (err)
+      div
+        h2(style = "color: red;")= err
+
+    h1(class="header")
+      | FreeCodeCamp API Basejump: Image Search Abstraction Layer
+
+    div
+      input(id="search-text")
+      br
+      input(type="number", placeholder="offset")
+      br
+      input(type="number", placeholder="limit")
